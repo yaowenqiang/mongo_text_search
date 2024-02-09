@@ -18,4 +18,5 @@ if the $search string includes a phrase and individual terms, text search will o
 
 > db.rent.createIndex({'name': 'text'})
 > db.rent.find({$text: {$search: 'Tribeca'}}, {'name': 1})
-> 
+> db.rent.find({$text: {$search: 'Tribeca \"East Village\" -loft'}}, {'name': 1})
+>
