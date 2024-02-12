@@ -29,5 +29,13 @@ if the $search string includes a phrase and individual terms, text search will o
 > db.rent.find({$text:{$search: 'tribeca Loft', $caseSensitive: true}}, {_id: 0, name: 1 }).limit(5)
 > db.rent.find({$text:{$search: 'tribeca Loft', $diacriticSensitive: true}}, {_id: 0, name: 1 }).limit(5)
 >
+# create compound text index
+
+> db.rent.createIndex({'name': 'text', 'space': 'text'})
+>
+
+## create text index on all text fields
+
+db.rent.createIndex({"$**":'text'})
 
 
