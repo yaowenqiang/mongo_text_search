@@ -39,3 +39,11 @@ if the $search string includes a phrase and individual terms, text search will o
 db.rent.createIndex({"$**":'text'})
 
 
+# one text index per collection
+
+## weightedIndex
+
+> db.rent.createIndex({'name': 'text', 'neighbourhood_cleansed': 'text', 'description': 'text'}, {weights: {name: 5, neighborhood_cleansed: 10, description:1}, name: 'my_awsome_index'})
+>
+> db.rent.find({$text: {$search: 'tribeca loft'}}, {_id:0, name: 1, neighbourhood_cleansed: 1, score: {$meta: 'textScore'}}).sort({score: {$meta: 'textScore'}}).limit(5).pretty()
+>
