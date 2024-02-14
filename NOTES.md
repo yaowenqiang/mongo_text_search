@@ -47,3 +47,19 @@ db.rent.createIndex({"$**":'text'})
 >
 > db.rent.find({$text: {$search: 'tribeca loft'}}, {_id:0, name: 1, neighbourhood_cleansed: 1, score: {$meta: 'textScore'}}).sort({score: {$meta: 'textScore'}}).limit(5).pretty()
 >
+
+### drop all indexes
+
+> db.rent.dropIndexes()
+>
+### Index Partition
+
+> db.rent.createIndex({'neighbourhood_cleansed':'text', 'description': 'text', 'name': 'text'})
+> db.rent.createIndex({'neighbourhood_cleansed':'text', 'description': 'text', 'name': 'text'}, {weights: {neighbourhood_cleansed: 10}})
+
+> db.rent.createIndex({'neighbourhood_cleansed':1, 'name': 'text', 'description': 'text'})
+
+> >
+
+
+
