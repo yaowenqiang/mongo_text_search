@@ -62,4 +62,23 @@ db.rent.createIndex({"$**":'text'})
 > >
 
 
+## The case Sensitiveness Case
+
++ v3 Text indexes are case insensitive by default
++ Running a caseSensitive query is actually 2 queries
++ In older indexes this is 1 query, but overall less performant
++
+## Non-default language text indexes
+
+> db.drinks.createIndex({beverage: 'text'}, {default_language: 'es'}) # this brings different stems and stop words
+
+
+### Rules for language
+
++ Language field of document
++ inherit enclosing document's language field
++ Language from text index
++ Default language
+
+
 
