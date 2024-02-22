@@ -80,5 +80,16 @@ db.rent.createIndex({"$**":'text'})
 + Language from text index
 + Default language
 
+## get view defination
+>db.getCollectionInfos({'name':'view_name'}) 
 
-
+> db.collection.aggregate([
+{
+    $group: {
+        _id: 'collection',
+        total: {
+            $sum: 'collection'
+        }
+    }
+}
+])
